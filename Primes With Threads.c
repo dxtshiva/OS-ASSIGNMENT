@@ -29,6 +29,7 @@ int main()
     pthread_create(&tid, NULL, Prime, NULL); 
     pthread_join(tid, NULL); 
     printf("\n\nThread Execution Completed.\n"); 
+    getch();
     exit(0); 
     
 }
