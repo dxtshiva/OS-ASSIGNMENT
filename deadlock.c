@@ -14,10 +14,10 @@ int main()
                       { 0,6,5,2}, // P3 
                       { 0,6,5,6 } }; // P4 
   
-    int avail[4] = { 1,5,2,0 }; 
+    int avail[4] = { 1,5,2,0 }; //AVAILABLE RESOURCES
   
 int need[5][4];
-int finish[5],temp,flag=1,k,c1=0;
+int finish[5],flag=1,k,c1=0;
                int dead[5];
                int n=5,r=4;
                int i,j;
