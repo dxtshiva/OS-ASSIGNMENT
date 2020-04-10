@@ -2,22 +2,22 @@
 #include<conio.h>
 int main()
 {
-	    int alloc[5][4] = { { 0, 0, 1, 2 }, // P0    
+	    int allocation[5][4] = { { 0, 0, 1, 2 }, // P0    
                         { 1, 0, 0, 0 }, // P1 
-                        { 1, 3, 5, 4 }, // P2 		//ALLOCATION MATRIX
+                        { 1, 3, 5, 4 }, // P2 
                         { 0, 6, 3, 2 }, // P3 
                         { 0, 0, 1, 4 } }; // P4 
   
-       int max[5][4] = { { 0,0,1,2 }, // P0    
+       int maximum[5][4] = { { 0,0,1,2 }, // P0    
                       { 1,7,5,0 }, // P1 
-                      { 2,3,5,6 }, // P2 		//MAX MATRIX
+                      { 2,3,5,6 }, // P2 
                       { 0,6,5,2}, // P3 
                       { 0,6,5,6 } }; // P4 
   
-    int avail[4] = { 1,5,2,0 }; //AVAILABLE RESOURCES
+    int available[4] = { 1,5,2,0 }; 
   
-int need[5][4];
-int finish[5],flag=1,k,c1=0;
+int needed[5][4];
+int fin[5],flag=1,k,c1=0;
                int dead[5];
                int n=5,r=4;
                int i,j;
@@ -28,29 +28,27 @@ int finish[5],flag=1,k,c1=0;
                               printf("\nP%d\t   ",i);
                               for(j=0;j<r;j++)
                               {
-                                             printf("%d ",alloc[i][j]);
+                                             printf("%d ",allocation[i][j]);
                               }
                               printf("\t");
                               for(j=0;j<r;j++)
                               {
-                                             printf("%d ",max[i][j]); 
+                                             printf("%d ",maximum[i][j]); 
                               }
                               printf("\t");
                               if(i==0)
                               {
                                              for(j=0;j<r;j++)
-                                             printf("%d ",avail[j]);
+                                             printf("%d ",available[j]);
                               }
                }
                
                for(i=0;i<n;i++)
-               {
-                              finish[i]=0;
-               }
-               //find need matrix
+                  fin[i]=0;
+                      
                for(i=0;i<n;i++)
                 for(j=0;j<r;j++)
-                 need[i][j]=max[i][j]-alloc[i][j];
+                 needed[i][j]=maximum[i][j]-allocation[i][j];
                  
                while(flag)
                {
@@ -60,32 +58,27 @@ int finish[5],flag=1,k,c1=0;
                 		int c=0;
                 		for(j=0;j<r;j++)
 		                {
-		                if((finish[i]==0)&&(need[i][j]<=avail[j]))
+		                if((fin[i]==0)&&(needed[i][j]<=available[j]))
 			                {
 			                c++;
 			                if(c==r)
 				                {
 					                for(k=0;k<r;k++)
 						                {
-						                avail[k]+=alloc[i][j];
-						                finish[i]=1;
+						                available[k]+=allocation[i][j];
+						                fin[i]=1;
 						                flag=1;
 						                 }
-					                if(finish[i]==1)
-						                {
-						                	i=n;
-						                
+					                if(fin[i]==1)
+						                i=n;
 						                }
-				                }
-                			}		
-                		}
-                	}
+                			}	}  	}
                 }
                 j=0;
                 flag=0;
                 for(i=0;i<n;i++)
 	                {
-		                if(finish[i]==0)
+		                if(fin[i]==0)
 		                {
 		                dead[j]=i;
 		                j++;
@@ -108,4 +101,3 @@ int finish[5],flag=1,k,c1=0;
                getch();
                return 0;
 }
-
