@@ -24,11 +24,17 @@ int main()
 { 	
 	printf("Before Thread Execution\n\nEnter the number to get primes: "); 
 	scanf("%d",&num);
+	if(num<=0)
+	printf("Number must be greater than or equal to 1.");
+	else if(num==1)
+	printf("1 is neither prime nor composite number.");
+	else{
     pthread_t tid; 
     printf("\nThread execution started with thread id %d\n\n",tid);
     pthread_create(&tid, NULL, Prime, NULL); 
     pthread_join(tid, NULL); 
     printf("\n\nThread Execution Completed.\n"); 
+	}
     getch();
     exit(0); 
     
